@@ -1,0 +1,14 @@
+{
+  "folders": [
+    {
+      "path": "./to-do-list",
+      "name": "To do list"
+    },
+    {
+      "path": "./view_child-view_children",
+      "name": "ViewChild/ViewChildren"
+    }
+
+  ],
+  "settings": {}
+}

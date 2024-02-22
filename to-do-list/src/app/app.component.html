@@ -35,7 +35,7 @@
     }
 
     .toolbar {
-        position: absolute;
+        position: sticky;
         top: 0;
         left: 0;
         right: 0;
@@ -45,6 +45,7 @@
         background-color: #1976d2;
         color: white;
         font-weight: 600;
+        z-index: 1000;
     }
 
     .toolbar img {
@@ -307,7 +308,7 @@
 <div class="toolbar" role="banner">
     <img width="40" alt="Angular Logo"
         src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
-    <span>Welcome</span>
+    <span class="cursor-pointer" (click)="toggleTodoView()">Welcome</span>
     <div class="spacer"></div>
     <a aria-label="Angular on X" target="_blank" rel="noopener" href="https://twitter.com/angular" title="X">
         <svg id="twitter-logo" xmlns="http://www.w3.org/2000/svg" height="24" width="24" data-name="Logo"
@@ -327,7 +328,7 @@
     </a>
 </div>
 
-<div class="content" role="main">
+<div *ngIf="!showTodoView" class="content" role="main">
 
     <!-- Highlight Card -->
     <div class="card highlight-card card-small">
@@ -363,16 +364,8 @@
     <h1 class="font-bold text-2xl text-center !my-8">Welcome to {{ title }}!</h1>
 
     <div class="card flex justify-content-center">
-        <p-button label="Check" icon="pi pi-check"></p-button>
+        <p-button (onClick)="toggleTodoView()" label="To Do App" icon="pi pi-check"></p-button>
     </div>
-
-    <p-button label="Primary"></p-button>
-    <p-button label="Secondary" severity="secondary"></p-button>
-    <p-button label="Success" severity="success"></p-button>
-    <p-button label="Info" severity="info"></p-button>
-    <p-button label="Warning" severity="warning"></p-button>
-    <p-button label="Help" severity="help"></p-button>
-    <p-button label="Danger" severity="danger"></p-button>
 
 
     <!-- Resources -->
@@ -562,6 +555,10 @@
             transform="translate(142.69 -634.312)" fill="#eee" />
     </svg>
 
+</div>
+
+<div *ngIf="showTodoView">
+    <app-todo></app-todo>
 </div>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

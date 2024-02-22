@@ -1,0 +1,26 @@
+<h1 class="text-center font-semibold text-xl text-blue-500 mt-4">ViewChild/ViewChildren/TemplateVariable</h1>
+
+<div class="flex flex-col gap-y-6 mt-6 items-center">
+
+  <!-- Parent interacts with child via local variable -->
+  <h1 class="text-center font-semibold text-xl text-green-500">Parent interacts with child via local variable</h1>
+  <app-toggle #toggleComp></app-toggle>
+  <p-button label="Toogle via child method" [text]="true" [raised]="true" (onClick)="toggleComp.toggle()">
+  </p-button>
+
+  <!-- Parent class interacts with child via ViewChild -->
+  <h1 class="text-center font-semibold text-xl text-green-500">Parent class interacts with child via ViewChild</h1>
+  <app-toggle #toggleCompChild></app-toggle>
+  <p-button label="Toogle via ViewChild" [text]="true" [raised]="true" (onClick)="toggleInside()"></p-button>
+
+  <!-- Parent class interacts with child via ViewChildren -->
+  <h1 class="text-center font-semibold text-xl text-green-500">Parent class interacts with child via ViewChildren</h1>
+
+  <p-button label="Show last toggle" [text]="true" [raised]="true" (onClick)="showLast = !showLast"></p-button>
+  <app-toggle [(checked)]="checked"></app-toggle>
+  <app-toggle [(checked)]="checked"></app-toggle>
+  <ng-container *ngIf="showLast">
+    <app-toggle [(checked)]="checked"></app-toggle>
+  </ng-container>
+
+</div>

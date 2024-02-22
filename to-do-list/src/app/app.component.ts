@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     title = 'angular';
+    showTodoView = false;
+
+    toggleTodoView() {
+        this.showTodoView = !this.showTodoView;
+        console.log(this.showTodoView);
+    }
 }
